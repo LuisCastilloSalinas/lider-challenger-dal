@@ -30,6 +30,7 @@ public class ProductController {
      */
     @GetMapping("products/find-by-id/{id}")
     public ResponseEntity<Product> findProductsById(@PathVariable Long id) {
+         log.info("find product by id" + id );
         Optional<Product> product = productRepository.findById(id);
         if (!product.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -40,7 +41,8 @@ public class ProductController {
 
     @GetMapping("products/find-by-brand-or-description")
     public ResponseEntity<List<Product>> findByBrandOrDescription(@RequestParam(name ="brand" , required = false) String brand , @RequestParam(name ="description" , required = false) String description) {
-        List<Product> products = productRepository.findByBrandOrDescription(brand,description);
+    	log.info("find product by brand " + brand  + " or " + "description "+ description);
+    	List<Product> products = productRepository.findByBrandOrDescription(brand,description);
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
