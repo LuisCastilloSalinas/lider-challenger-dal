@@ -47,7 +47,7 @@ public class ProductControllerTest {
 	@Test
 	public void findProductByIdTestOk() {
 		ResponseEntity<Product> response = productController.findProductsById(1L);
-		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 	}
 
 	@Test

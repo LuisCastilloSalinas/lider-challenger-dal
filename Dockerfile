@@ -1,7 +1,7 @@
 FROM gradle:6.6.1-jdk8-openj9 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle build --no-daemon
+RUN gradle build -x test
 
 FROM gcr.io/google-appengine/openjdk:8
 RUN mkdir /app
